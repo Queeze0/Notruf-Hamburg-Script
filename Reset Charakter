@@ -1,0 +1,6 @@
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+
+if character and character:FindFirstChild("Humanoid") then
+    character.Humanoid.Health = 0
+end
