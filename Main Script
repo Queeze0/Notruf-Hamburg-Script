@@ -26,14 +26,37 @@ local Window = Rayfield:CreateWindow({
    }
 })
 
+--Tabs
 local CharakterTab = Window:CreateTab("Character", nil) -- Title, Image
-local TeleportTab = Window:CreateTab("Teleport", nil) -- Title, Image
 local VehicleTab = Window:CreateTab("Vehicle", nil)
+local TeleportTab = Window:CreateTab("Teleport", nil) -- Title, Image
+local MiscTab = Window:CreateTab("Tab Example", 4483362458) -- Title, Image
+local AddonTab = Window:CreateTab("Vehicle", nil)
+
+
+--Sections
 local MainSection = CharakterTab:CreateSection("Main")
 local VehicleSection = VehicleTab:CreateSection("Main")
+local TeleportSection = VehicleTab:CreateSection("Main")
+local MiscSection = VehicleTab:CreateSection("Main")
+local AddonSection = VehicleTab:CreateSection("Main")
 
 
 
+Rayfield:Notify({
+   Title = "Script executed successfully",
+   Content = "Very Good Gui",
+   Duration = 5,
+   Image = nil,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "Okay!",
+         Callback = function()
+         print("The user tapped Okay!")
+      end
+   },
+},
+})
 
 local Button = CharakterTab:CreateButton({
    Name = "Reset Charakter",
