@@ -34,20 +34,6 @@ local VehicleSection = VehicleTab:CreateSection("Main")
 
 
 
-Rayfield:Notify({
-   Title = "Script executed successfully",
-   Content = "Very Good Gui",
-   Duration = 5,
-   Image = nil,
-   Actions = { -- Notification Buttons
-      Ignore = {
-         Name = "Okay!",
-         Callback = function()
-         print("The user tapped Okay!")
-      end
-   },
-},
-})
 
 local Button = CharakterTab:CreateButton({
    Name = "Reset Charakter",
