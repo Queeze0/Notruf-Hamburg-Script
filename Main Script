@@ -29,16 +29,16 @@ local Window = Rayfield:CreateWindow({
 --Tabs
 local CharakterTab = Window:CreateTab("Character", nil) -- Title, Image
 local VehicleTab = Window:CreateTab("Vehicle", nil)
+local MiscTab = Window:CreateTab("Misc", nil) -- Title, Image
 local TeleportTab = Window:CreateTab("Teleport", nil) -- Title, Image
-local MiscTab = Window:CreateTab("Tab Example", 4483362458) -- Title, Image
 local AddonTab = Window:CreateTab("Vehicle", nil)
 
 
 --Sections
 local MainSection = CharakterTab:CreateSection("Main")
-local VehicleSection = VehicleTab:CreateSection("Main")
-local TeleportSection = VehicleTab:CreateSection("Main")
-local MiscSection = VehicleTab:CreateSection("Main")
+local VehicleSection = TeleportTab:CreateSection("Main")
+local TeleportSection = MiscTab:CreateSection("Main")
+local MiscSection = AddonTab:CreateSection("Main")
 local AddonSection = VehicleTab:CreateSection("Main")
 
 
@@ -69,5 +69,19 @@ local Button = CharakterTab:CreateButton({
       end      
    end,
 })
+
+local Button = VehicleTab:CreateButton({
+    Name = "Vehicle fly",
+    Callback = function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/v5Pj1G8p", true))()
+    end,
+ })
+
+ local Button = MiscTab:CreateButton({
+    Name = "Dex Explorer",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/infyiff/backup/main/dex.lua"))()
+    end,
+ })
 
 
