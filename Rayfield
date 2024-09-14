@@ -25,9 +25,9 @@ local RayfieldLibrary = {
 			TextFont = "Default", -- Default will use the various font faces used across Rayfield
 			TextColor = Color3.fromRGB(240, 240, 240),
 
-			Background = Color3.fromRGB(255, 0, 0),
-			Topbar = Color3.fromRGB(255, 0, 0),
-			Shadow = Color3.fromRGB(255, 0, 0),
+			Background = Color3.fromRGB(100, 100, 100),
+			Topbar = Color3.fromRGB(100, 100, 100),
+			Shadow = Color3.fromRGB(100, 100, 100),
 
 			NotificationBackground = Color3.fromRGB(20, 20, 20),
 			NotificationActionsBackground = Color3.fromRGB(230, 230, 230),
@@ -64,14 +64,14 @@ local RayfieldLibrary = {
 			TextFont = "Gotham", -- Default will use the various font faces used across Rayfield
 			TextColor = Color3.fromRGB(50, 50, 50), -- i need to make all text 240, 240, 240 and base gray on transparency not color to do this
 
-			Background = Color3.fromRGB(255, 0, 0),
-			Topbar = Color3.fromRGB(255, 0, 0),
+			Background = Color3.fromRGB(255, 255, 255),
+			Topbar = Color3.fromRGB(217, 217, 217),
 			Shadow = Color3.fromRGB(223, 223, 223),
 
 			NotificationBackground = Color3.fromRGB(20, 20, 20),
 			NotificationActionsBackground = Color3.fromRGB(230, 230, 230),
 
-			TabBackground = Color3.fromRGB(255, 0, 0),
+			TabBackground = Color3.fromRGB(220, 220, 220),
 			TabStroke = Color3.fromRGB(112, 112, 112),
 			TabBackgroundSelected = Color3.fromRGB(0, 142, 208),
 			TabTextColor = Color3.fromRGB(240, 240, 240),
@@ -2408,7 +2408,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 	TweenService:Create(Main, TweenInfo.new(0.7, Enum.EasingStyle.Quint), {Size = UDim2.new(0, 500, 0, 475)}):Play()
 	TweenService:Create(Main.Shadow.Image, TweenInfo.new(0.7, Enum.EasingStyle.Quint), {ImageTransparency = 0.4}):Play()
 
-	Topbar.BackgroundTransparency = 1
+	Topbar.BackgroundTransparency = 0
 	Topbar.Divider.Size = UDim2.new(0, 0, 0, 1)
 	Topbar.CornerRepair.BackgroundTransparency = 1
 	Topbar.Title.TextTransparency = 1
