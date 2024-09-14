@@ -10,7 +10,7 @@ local Window = Rayfield:CreateWindow({
       FileName = "Queeze Hub"
    },
    Discord = {
-      Enabled = true,
+      Enabled = false,
       Invite = "jQn7GCw4WV",
       RememberJoins = false
    },
@@ -20,7 +20,7 @@ local Window = Rayfield:CreateWindow({
       Subtitle = "Link In Discord Server",
       Note = "Key in Discord",
       FileName = "Emergency Hamburg Key",
-      SaveKey = true,
+      SaveKey = false,
       GrabKeyFromSite = false,
       Key = {"Queeze"}
    }
