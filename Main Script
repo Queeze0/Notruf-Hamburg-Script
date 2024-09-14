@@ -1,4 +1,4 @@
-local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/Queeze0/Notruf-Hamburg-Script/main/Rayfield'))()
 
 local Window = Rayfield:CreateWindow({
    Name = "🚓 Emergency Hamburg script 🚓",
@@ -6,82 +6,101 @@ local Window = Rayfield:CreateWindow({
    LoadingSubtitle = "by Queeze",
    ConfigurationSaving = {
       Enabled = false,
-      FolderName = nil, -- Create a custom folder for your hub/game
+      FolderName = nil,
       FileName = "Queeze Hub"
    },
    Discord = {
       Enabled = true,
-      Invite = "https://discord.gg/jQn7GCw4WV", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
-      RememberJoins = false -- Set this to false to make them join the discord every time they load it up
+      Invite = "jQn7GCw4WV",
+      RememberJoins = false
    },
-   KeySystem = true, -- Set this to true to use our key system
+   KeySystem = true,
    KeySettings = {
-      Title = "Emergency Hamburg | Key  ",
+      Title = "Emergency Hamburg | Key",
       Subtitle = "Link In Discord Server",
-      Note = "No method of obtaining the key is provided",
-      FileName = "Emergency Hamburg Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
-      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
-      GrabKeyFromSite = true, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
-      Key = {"https://pastebin.com/raw/ASRtYNRT"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+      Note = "Key in Discord",
+      FileName = "Emergency Hamburg Key",
+      SaveKey = true,
+      GrabKeyFromSite = false,
+      Key = {"Queeze"}
    }
 })
 
---Tabs
-local CharakterTab = Window:CreateTab("Character", nil) -- Title, Image
-local VehicleTab = Window:CreateTab("Vehicle", nil)
-local MiscTab = Window:CreateTab("Misc", nil) -- Title, Image
-local TeleportTab = Window:CreateTab("Teleport", nil) -- Title, Image
-local AddonTab = Window:CreateTab("Vehicle", nil)
+-- Initialize a flag to indicate whether the script should run
+local shouldRunScript = false
 
+-- Tabs
+local MainTab = Window:CreateTab("Main", nil)
+local ServerTab = Window:CreateTab("Server", nil)
 
---Sections
-local MainSection = CharakterTab:CreateSection("Main")
-local VehicleSection = TeleportTab:CreateSection("Main")
-local TeleportSection = MiscTab:CreateSection("Main")
-local MiscSection = AddonTab:CreateSection("Main")
-local AddonSection = VehicleTab:CreateSection("Main")
+-- Sections
+local MainSection = MainTab:CreateSection("Charakter")
 
-
-
-Rayfield:Notify({
-   Title = "Script executed successfully",
-   Content = "Very Good Gui",
-   Duration = 5,
-   Image = nil,
-   Actions = { -- Notification Buttons
-      Ignore = {
-         Name = "Okay!",
-         Callback = function()
-         print("The user tapped Okay!")
-      end
-   },
-},
-})
-
-local Button = CharakterTab:CreateButton({
+-- Reset Charakter Button
+local Button = MainTab:CreateButton({
    Name = "Reset Charakter",
    Callback = function()
       local player = game.Players.LocalPlayer
       local character = player.Character or player.CharacterAdded:Wait()
-      
+
       if character and character:FindFirstChild("Humanoid") then
           character.Humanoid.Health = 0
       end      
    end,
 })
 
-local Button = VehicleTab:CreateButton({
+-- Vehicle Fly Button
+local MainSection = MainTab:CreateSection("Vehicle")
+local Button = MainTab:CreateButton({
     Name = "Vehicle fly",
     Callback = function()
-    loadstring(game:HttpGet("https://pastebin.com/raw/v5Pj1G8p", true))()
+        loadstring(game:HttpGet("https://pastebin.com/raw/v5Pj1G8p", true))()
     end,
  })
 
- local Button = MiscTab:CreateButton({
+-- Dex Explorer Button
+local MainSection = MainTab:CreateSection("Misc")
+local Button = MainTab:CreateButton({
     Name = "Dex Explorer",
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/infyiff/backup/main/dex.lua"))()
     end,
- })
+})
 
+-- Server-Rejoin Button (Kick player and rejoin to a different server)
+local Button = ServerTab:CreateButton({
+   Name = "Server-Rejoin",
+   Callback = function()
+      local TeleportService = game:GetService("TeleportService")
+      local placeId = game.PlaceId -- The current game's PlaceId
+      local player = game.Players.LocalPlayer
+
+      -- Set the flag indicating that the script should run
+      shouldRunScript = true
+
+      -- Kick player from the current game
+      local success, err = pcall(function()
+         -- This will kick the player and automatically rejoin to a different server
+         player:Kick("Kicking to join a new server with other players...")
+      end)
+
+      -- If an error occurs, print it to the console
+      if not success then
+         warn("Fehler beim Kick: " .. tostring(err))
+      end
+
+      -- Use a delay to ensure the kick takes effect before rejoining
+      wait(5) -- Increase delay to ensure proper kick and rejoin
+
+      -- Attempt to teleport to a new server (different instance)
+      local success, err = pcall(function()
+         -- Use a method to ensure new instance
+         TeleportService:Teleport(placeId, player)
+      end)
+
+      if not success then
+         warn("Fehler beim Teleportieren: " .. tostring(err))
+      end
+   end,
+})
 
