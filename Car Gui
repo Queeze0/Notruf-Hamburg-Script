@@ -1,12 +1,12 @@
-local VenyxLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/Documantation12/Universal-Vehicle-Script/main/Library.lua"))()
-local Venyx = VenyxLibrary.new("Universal Vehicle Script", 5013109572)
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xovanDJX/Backup/main/Venyx%20UI%20Library"))()
+local venyx = library.new("Venyx | Universal Vehicle Speed | Restored By X_LuaF#0705", 5013109572)
 
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
 local LocalPlayer = Players.LocalPlayer
 
-local Theme = {
+local themes = {
 	Background = Color3.fromRGB(61, 60, 124), 
 	Glow = Color3.fromRGB(60, 63, 221), 
 	Accent = Color3.fromRGB(55, 52, 90), 
@@ -14,10 +14,6 @@ local Theme = {
 	DarkContrast = Color3.fromRGB(32, 33, 64),  
 	TextColor = Color3.fromRGB(255, 255, 255)
 }
-
-for index, value in pairs(Theme) do
-	pcall(Venyx.setTheme, Venyx, index, value)
-end
 
 local function GetVehicleFromDescendant(Descendant)
 	return
@@ -40,7 +36,7 @@ local function TeleportVehicle(CoordinateFrame: CFrame)
 end
 
 
-local vehiclePage = Venyx:addPage("Vehicle", 8356815386)
+local vehiclePage = venyx:addPage("Vehicle", 8356815386)
 local usageSection = vehiclePage:addSection("Usage")
 local velocityEnabled = true;
 usageSection:addToggle("Keybinds Active", velocityEnabled, function(v) velocityEnabled = v end)
@@ -149,12 +145,29 @@ decelerateSelection:addKeybind("Stop the Vehicle", Enum.KeyCode.P, function(v)
 		end
 	end
 end)
-
+local springSection = vehiclePage:addSection("Springs")
+springSection:addToggle("Visible", false, function(v)
+	local Character = LocalPlayer.Character
+	if Character and typeof(Character) == "Instance" then
+		local Humanoid = Character:FindFirstChildWhichIsA("Humanoid")
+		if Humanoid and typeof(Humanoid) == "Instance" then
+			local SeatPart = Humanoid.SeatPart
+			if SeatPart and typeof(SeatPart) == "Instance" and SeatPart:IsA("VehicleSeat") then
+				local Vehicle = GetVehicleFromDescendant(SeatPart)
+				for _, SpringConstraint in pairs(Vehicle:GetDescendants()) do
+					if SpringConstraint:IsA("SpringConstraint") then
+						SpringConstraint.Visible = v
+					end
+				end
+			end
+		end
+	end
+end)
 repeat
 	task.wait(0)
 until game:IsLoaded() and game.PlaceId > 0
 if game.PlaceId == 3351674303 then
-	local drivingEmpirePage = Venyx:addPage("Wayfort", 8357222903)
+	local drivingEmpirePage = venyx:addPage("Wayfort", 8357222903)
 	local dealershipSection = drivingEmpirePage:addSection("Vehicle Dealership")
 	local dealershipList = {}
 	for index, value in pairs(workspace:WaitForChild("Game"):WaitForChild("Dealerships"):WaitForChild("Dealerships"):GetChildren()) do
@@ -164,20 +177,18 @@ if game.PlaceId == 3351674303 then
 		game:GetService("ReplicatedStorage").Remotes.Location:FireServer("Enter", v)
 	end)
 elseif game.PlaceId == 891852901 then
-	local greenvillePage = Venyx:addPage("Greenville", 8360925727)
+	local greenvillePage = venyx:addPage("Greenville", 8360925727)
 elseif game.PlaceId == 54865335 then
-	local ultimateDrivingPage = Venyx:addPage("Westover", 8360954483)
+	local ultimateDrivingPage = venyx:addPage("Westover", 8360954483)
 elseif game.PlaceId == 5232896677 then
-	local pacificoPage = Venyx:addPage("Pacifico", 3028235557)
+	local pacificoPage = venyx:addPage("Pacifico", 3028235557)
 end
-local function CloseGUI()
-    Venyx:toggle()
-end
-
-UserInputService.InputBegan:Connect(function(input, gameProcessedEvent)
-    if not gameProcessedEvent and input.KeyCode == Enum.KeyCode.RightBracket then
-        CloseGUI()
-    end
+local infoPage = venyx:addPage("Information", 8356778308)
+local discordSection = infoPage:addSection("shawnjbragdon#0001")
+discordSection:addButton(syn and "Join shawn's Discord Server" or "Join Creator's Discord Server", function()
+if syn then syn.request({ Url = "http://127.0.0.1:6463/rpc?v=1", Method = "POST",Headers = {["Content-Type"] = "application/json",["Origin"] = "https://discord.com"},
+Body = game:GetService("HttpService"):JSONEncode({cmd = "INVITE_BROWSER",args = {code = "afSxatJjTg"},nonce = game:GetService("HttpService"):GenerateGUID(false)}),}) return end
+setclipboard("https://www.discord.com/invite/afSxatJjTg")
 end)
-
-
+local discordSection1 = infoPage:addSection("LuaXie")
+discordSection1:addButton(syn and "Join LuaXie's Discord Server" or "Join LuaXie's Discord Server", function() setclipboard("discord.gg/8tRb8MQcW5") end)
