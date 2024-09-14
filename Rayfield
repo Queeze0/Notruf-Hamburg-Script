@@ -23,85 +23,84 @@ local RayfieldLibrary = {
 	Theme = {
 		Default = {
 			TextFont = "Default",
-			TextColor = Color3.fromRGB(240, 240, 240),
+			TextColor = Color3.fromRGB(0, 0, 0), -- Schwarze Schrift
 
-			Background = Color3.fromRGB(0, 0, 30), -- Dunkelblau
-			Topbar = Color3.fromRGB(0, 0, 40),
-			Shadow = Color3.fromRGB(0, 0, 20),
+			Background = Color3.fromRGB(255, 255, 255), -- Weiß
+			Topbar = Color3.fromRGB(255, 255, 255), -- Weiß
+			Shadow = Color3.fromRGB(200, 200, 200), -- Helles Grau für Schatten
 
-			NotificationBackground = Color3.fromRGB(0, 0, 30),
-			NotificationActionsBackground = Color3.fromRGB(200, 200, 255),
+			NotificationBackground = Color3.fromRGB(255, 255, 255),
+			NotificationActionsBackground = Color3.fromRGB(240, 240, 240), -- Helles Grau für Benachrichtigungen
 
-			TabBackground = Color3.fromRGB(0, 0, 40),
-			TabStroke = Color3.fromRGB(0, 0, 50),
-			TabBackgroundSelected = Color3.fromRGB(0, 0, 50),
-			TabTextColor = Color3.fromRGB(240, 240, 240),
-			SelectedTabTextColor = Color3.fromRGB(255, 255, 255),
+			TabBackground = Color3.fromRGB(0, 0, 255), -- Blau für Tabs
+			TabStroke = Color3.fromRGB(0, 0, 200), -- Dunkleres Blau für den Rand
+			TabBackgroundSelected = Color3.fromRGB(0, 0, 200), -- Dunkleres Blau für ausgewählte Tabs
+			TabTextColor = Color3.fromRGB(255, 255, 255), -- Weißer Text auf den Tabs
+			SelectedTabTextColor = Color3.fromRGB(255, 255, 255), -- Weiß für gute Sichtbarkeit
 
-			ElementBackground = Color3.fromRGB(0, 0, 35),
-			ElementBackgroundHover = Color3.fromRGB(0, 0, 35), -- Immer dunkelblau
-			SecondaryElementBackground = Color3.fromRGB(0, 0, 30),
-			ElementStroke = Color3.fromRGB(0, 0, 40),
-			SecondaryElementStroke = Color3.fromRGB(0, 0, 35),
+			ElementBackground = Color3.fromRGB(255, 255, 255), -- Weiß
+			ElementBackgroundHover = Color3.fromRGB(255, 255, 255), -- Weiß für Hover-Effekt
+			SecondaryElementBackground = Color3.fromRGB(255, 255, 255), -- Weiß für Labels und Paragraphen
+			ElementStroke = Color3.fromRGB(200, 200, 200), -- Helles Grau für Rahmen
+			SecondaryElementStroke = Color3.fromRGB(200, 200, 200), -- Helles Grau für Rahmen
 
-			SliderBackground = Color3.fromRGB(0, 0, 70),
-			SliderProgress = Color3.fromRGB(0, 0, 70),
-			SliderStroke = Color3.fromRGB(0, 0, 90),
+			SliderBackground = Color3.fromRGB(0, 0, 255), -- Blau
+			SliderProgress = Color3.fromRGB(0, 0, 255), -- Blau
+			SliderStroke = Color3.fromRGB(0, 0, 200), -- Dunkleres Blau
 
-			ToggleBackground = Color3.fromRGB(0, 0, 30),
-			ToggleEnabled = Color3.fromRGB(0, 80, 160),
-			ToggleDisabled = Color3.fromRGB(60, 60, 60),
-			ToggleEnabledStroke = Color3.fromRGB(0, 100, 200),
-			ToggleDisabledStroke = Color3.fromRGB(80, 80, 80),
-			ToggleEnabledOuterStroke = Color3.fromRGB(50, 50, 50),
-			ToggleDisabledOuterStroke = Color3.fromRGB(40, 40, 40),
+			ToggleBackground = Color3.fromRGB(255, 255, 255), -- Weiß
+			ToggleEnabled = Color3.fromRGB(0, 0, 255), -- Blau
+			ToggleDisabled = Color3.fromRGB(200, 200, 200), -- Helles Grau
+			ToggleEnabledStroke = Color3.fromRGB(0, 0, 200), -- Dunkleres Blau
+			ToggleDisabledStroke = Color3.fromRGB(150, 150, 150), -- Mittelgrau
+			ToggleEnabledOuterStroke = Color3.fromRGB(200, 200, 200), -- Helles Grau
+			ToggleDisabledOuterStroke = Color3.fromRGB(150, 150, 150), -- Mittelgrau
 
-			InputBackground = Color3.fromRGB(0, 0, 30),
-			InputStroke = Color3.fromRGB(20, 20, 40),
-			PlaceholderColor = Color3.fromRGB(178, 178, 178)
+			InputBackground = Color3.fromRGB(255, 255, 255), -- Weiß
+			InputStroke = Color3.fromRGB(200, 200, 200), -- Helles Grau
+			PlaceholderColor = Color3.fromRGB(150, 150, 150) -- Mittelgrau
 		},
 		Light = {
 			TextFont = "Gotham",
-			TextColor = Color3.fromRGB(240, 240, 240),
+			TextColor = Color3.fromRGB(0, 0, 0), -- Schwarze Schrift
 
-			Background = Color3.fromRGB(10, 10, 40),
-			Topbar = Color3.fromRGB(20, 20, 50),
-			Shadow = Color3.fromRGB(10, 10, 30),
+			Background = Color3.fromRGB(255, 255, 255), -- Weiß
+			Topbar = Color3.fromRGB(255, 255, 255), -- Weiß
+			Shadow = Color3.fromRGB(200, 200, 200), -- Helles Grau für Schatten
 
-			NotificationBackground = Color3.fromRGB(10, 10, 40),
-			NotificationActionsBackground = Color3.fromRGB(200, 200, 255),
+			NotificationBackground = Color3.fromRGB(255, 255, 255),
+			NotificationActionsBackground = Color3.fromRGB(240, 240, 240), -- Helles Grau für Benachrichtigungen
 
-			TabBackground = Color3.fromRGB(20, 20, 50),
-			TabStroke = Color3.fromRGB(30, 30, 60),
-			TabBackgroundSelected = Color3.fromRGB(20, 20, 60),
-			TabTextColor = Color3.fromRGB(240, 240, 240),
-			SelectedTabTextColor = Color3.fromRGB(255, 255, 255),
+			TabBackground = Color3.fromRGB(0, 0, 255), -- Blau für Tabs
+			TabStroke = Color3.fromRGB(0, 0, 200), -- Dunkleres Blau für den Rand
+			TabBackgroundSelected = Color3.fromRGB(0, 0, 200), -- Dunkleres Blau für ausgewählte Tabs
+			TabTextColor = Color3.fromRGB(255, 255, 255), -- Weißer Text auf den Tabs
+			SelectedTabTextColor = Color3.fromRGB(255, 255, 255), -- Weiß für gute Sichtbarkeit
 
-			ElementBackground = Color3.fromRGB(10, 10, 45),
-			ElementBackgroundHover = Color3.fromRGB(10, 10, 45), -- Immer dunkelblau
-			SecondaryElementBackground = Color3.fromRGB(10, 10, 40),
-			ElementStroke = Color3.fromRGB(20, 20, 50),
-			SecondaryElementStroke = Color3.fromRGB(10, 10, 45),
+			ElementBackground = Color3.fromRGB(255, 255, 255), -- Weiß
+			ElementBackgroundHover = Color3.fromRGB(255, 255, 255), -- Weiß für Hover-Effekt
+			SecondaryElementBackground = Color3.fromRGB(255, 255, 255), -- Weiß für Labels und Paragraphen
+			ElementStroke = Color3.fromRGB(200, 200, 200), -- Helles Grau für Rahmen
+			SecondaryElementStroke = Color3.fromRGB(200, 200, 200), -- Helles Grau für Rahmen
 
-			SliderBackground = Color3.fromRGB(10, 20, 60),
-			SliderProgress = Color3.fromRGB(10, 20, 60),
-			SliderStroke = Color3.fromRGB(20, 30, 80),
+			SliderBackground = Color3.fromRGB(0, 0, 255), -- Blau
+			SliderProgress = Color3.fromRGB(0, 0, 255), -- Blau
+			SliderStroke = Color3.fromRGB(0, 0, 200), -- Dunkleres Blau
 
-			ToggleBackground = Color3.fromRGB(10, 10, 40),
-			ToggleEnabled = Color3.fromRGB(0, 100, 200),
-			ToggleDisabled = Color3.fromRGB(80, 20, 20),
-			ToggleEnabledStroke = Color3.fromRGB(0, 120, 220),
-			ToggleDisabledStroke = Color3.fromRGB(60, 10, 10),
-			ToggleEnabledOuterStroke = Color3.fromRGB(40, 40, 40),
-			ToggleDisabledOuterStroke = Color3.fromRGB(100, 0, 0),
+			ToggleBackground = Color3.fromRGB(255, 255, 255), -- Weiß
+			ToggleEnabled = Color3.fromRGB(0, 0, 255), -- Blau
+			ToggleDisabled = Color3.fromRGB(200, 200, 200), -- Helles Grau
+			ToggleEnabledStroke = Color3.fromRGB(0, 0, 200), -- Dunkleres Blau
+			ToggleDisabledStroke = Color3.fromRGB(150, 150, 150), -- Mittelgrau
+			ToggleEnabledOuterStroke = Color3.fromRGB(200, 200, 200), -- Helles Grau
+			ToggleDisabledOuterStroke = Color3.fromRGB(150, 150, 150), -- Mittelgrau
 
-			InputBackground = Color3.fromRGB(10, 20, 60),
-			InputStroke = Color3.fromRGB(20, 30, 50),
-			PlaceholderColor = Color3.fromRGB(178, 178, 178)
+			InputBackground = Color3.fromRGB(255, 255, 255), -- Weiß
+			InputStroke = Color3.fromRGB(200, 200, 200), -- Helles Grau
+			PlaceholderColor = Color3.fromRGB(150, 150, 150) -- Mittelgrau
 		}
 	}
 }
-
 
 
 
