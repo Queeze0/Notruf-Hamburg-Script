@@ -68,8 +68,9 @@ local Button = MainTab:CreateButton({
 })
 
 -- Server-Rejoin Button (Kick player and rejoin to a different server)
+local MainSection = ServerTab:CreateSection("Server-Switch")
 local Button = ServerTab:CreateButton({
-   Name = "Server-Rejoin",
+   Name = "Server-Switch",
    Callback = function()
       local TeleportService = game:GetService("TeleportService")
       local placeId = game.PlaceId -- The current game's PlaceId
