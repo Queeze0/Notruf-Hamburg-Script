@@ -7,7 +7,7 @@ local character = player.Character or player.CharacterAdded:Wait()
 local targetPosition = Vector3.new(-738.9591674804688, 17.60025978088379, 673.0227661132812)
 
 -- Funktion, um den Abstand zwischen zwei Positionen zu berechnen
-local function getDistance(pos1, pos2)
+local function getDistance(pos1, pos2) 
     return (pos1 - pos2).Magnitude
 end
 
