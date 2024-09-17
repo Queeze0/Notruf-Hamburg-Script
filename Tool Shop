@@ -1,0 +1,45 @@
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+
+-- Neue Zielkoordinaten
+local targetPosition = Vector3.new(-738.9591674804688, 17.60025978088379, 673.0227661132812)
+
+-- Funktion, um den Spieler und das Fahrzeug zu teleportieren
+local function teleport()
+    -- Überprüfe, ob das Fahrzeug des Spielers im Workspace existiert
+    local vehicleModel = game.Workspace.Vehicles:FindFirstChild(player.Name)
+    
+    if vehicleModel then
+        -- Suche den DriveSeat innerhalb des Spielerfahrzeugs
+        local driveSeat = vehicleModel:FindFirstChild("DriveSeat")
+        
+        if driveSeat and driveSeat.Occupant == character.Humanoid then
+            -- Wenn der Spieler im DriveSeat sitzt, teleportiere das Fahrzeug
+            
+            -- Setze das PrimaryPart, falls es nicht gesetzt ist
+            if not vehicleModel.PrimaryPart then
+                vehicleModel.PrimaryPart = driveSeat  -- Setze den DriveSeat als PrimaryPart
+            end
+
+            -- Teleportiere das Fahrzeug
+            vehicleModel:SetPrimaryPartCFrame(CFrame.new(targetPosition))
+            print("Das Fahrzeug wurde zu den Koordinaten teleportiert: X: " .. targetPosition.X .. ", Y: " .. targetPosition.Y .. ", Z: " .. targetPosition.Z)
+        else
+            print("Du sitzt nicht im DriveSeat.")
+        end
+    else
+        print("Kein Fahrzeug für den Spieler gefunden. Teleportation des Charakters.")
+        
+        -- Wenn kein Fahrzeug vorhanden ist, teleportiere den Spieler
+        local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+        if humanoidRootPart then
+            humanoidRootPart.CFrame = CFrame.new(targetPosition)
+            print("Du wurdest zu den Koordinaten teleportiert: X: " .. targetPosition.X .. ", Y: " .. targetPosition.Y .. ", Z: " .. targetPosition.Z)
+        else
+            print("HumanoidRootPart wurde nicht gefunden. Teleportation fehlgeschlagen.")
+        end
+    end
+end
+
+-- Teleportiere den Spieler oder das Fahrzeug
+teleport()
